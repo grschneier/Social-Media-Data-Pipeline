@@ -2,9 +2,6 @@
 
 This program extracts data from APIs and Google Drive, transforms it, and uploads it to a SQL database.
 
-Data References here:
-https://docs.google.com/spreadsheets/d/1Qm4x9upXJ7waYL8HJXGSme2UUlO5VirIc0cQx2uvgoM/edit?gid=1063056499#gid=1063056499
-
 ## Environment Variables
 
 The pipeline expects several credentials to be available as environment variables or in a `.env`/`keys.env` file:
