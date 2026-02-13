@@ -2,6 +2,8 @@
 
 This program extracts data from Social Media APIs and an office Google Drive, transforms it, and uploads it to a SQL database.
 
+This was built in collaboration with Codebugged Research company and used ChatGPT Codex.
+
 ## Environment Variables
 
 The pipeline expects several credentials to be available as environment variables or in a `.env`/`keys.env` file:
