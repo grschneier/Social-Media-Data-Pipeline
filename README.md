@@ -1,6 +1,6 @@
 # ETL Pipeline
 
-This program extracts data from APIs and Google Drive, transforms it, and uploads it to a SQL database.
+This program extracts data from Social Media APIs and an office Google Drive, transforms it, and uploads it to a SQL database.
 
 ## Environment Variables
 
