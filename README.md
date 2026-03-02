@@ -2,7 +2,7 @@
 
 This program extracts data from Social Media APIs and an office Google Drive, transforms it, and uploads it to a SQL database.
 
-This was built in collaboration with Codebugged Research company and used ChatGPT Codex.
+This was built in collaboration with Codebugged Research company.
 
 ## Environment Variables
 
