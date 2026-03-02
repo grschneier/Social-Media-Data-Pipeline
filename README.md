@@ -1,35 +1,20 @@
 # ETL Pipeline
-
 This program extracts data from Social Media APIs and an office Google Drive, transforms it, and uploads it to a SQL database.
-
 This was built in collaboration with Codebugged Research company.
-
 ## Environment Variables
-
 The pipeline expects several credentials to be available as environment variables or in a `.env`/`keys.env` file:
-
 - `DB_USER` – database username
 - `DB_PASSWORD` – database password
 - `DB_HOST` – database host
-
 API tokens such as `fb_access_token`, `tiktok_access_token`, `linkedin_access_token`, and the Google Ads credentials shown in `keys.env` should also be provided in the environment.
-
 For accessing Google Drive, set:
-
 - `google_drive_client_secret` – contents of the Drive OAuth client secret JSON
 - `google_drive_token` – OAuth token JSON generated for Drive access
-
 ## Setup
-
 1. Install Python 3.10+ and clone this repository.
 2. Install the dependencies:
    ```bash
    pip install -r requirements.txt
-   ```
-   Prefect version 2.13 or newer is required. If you see a
-   `PREFECT_SERVER_ALLOW_EPHEMERAL_MODE` validation error, upgrade Prefect:
-   ```bash
-   pip install -U prefect
    ```
 3. Create a `.env` or `keys.env` file and provide all required credentials. A minimal example:
    ```env
@@ -47,37 +32,18 @@ For accessing Google Drive, set:
    google_drive_token={...json...}
    ```
    These values can also be exported directly in your shell environment.
-
 ## Running the ETL
-
-The Prefect flow is defined in `prefect_pipeline.py`. Start an agent and then trigger the `etl_pipeline` deployment.
-
-Start a local agent:
-```bash
-prefect agent start --work-queue default
-```
-or run the agent inside a Docker container:
-```bash
-docker run --pull always -it --env-file keys.env prefecthq/prefect:2 agent start -q "default"
-```
-With the agent running, trigger the flow:
-```bash
-prefect deployment run etl_pipeline
-```
-
-For ad-hoc runs you can still execute the script directly:
+Run the pipeline directly:
 ```bash
 python load.py
 ```
-Alternatively build and run the Docker image:
+Alternatively, build and run the Docker image:
 ```bash
 docker build -t etl-pipeline .
 docker run --env-file keys.env etl-pipeline
 ```
 The `load.py` module orchestrates extraction from the various APIs, applies transformations, and loads the final tables into the target MySQL database.
-
 ## Workflow Overview
-
 1. **Mapping** – `mapping.generate_mapping()` uses your API credentials to discover advertising accounts.
 2. **Extraction** – `extract.py` pulls raw data from Facebook, TikTok, LinkedIn and YouTube APIs.
 3. **Transformation** – `transform.py` cleans and standardises the datasets.
