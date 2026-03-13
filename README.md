@@ -1,6 +1,11 @@
 # ETL Pipeline
-This program extracts data from Social Media APIs and an office Google Drive, transforms it, and uploads it to a SQL database.
+This pipeline extracts paid and organic social media data from five sources — Facebook Ads, TikTok Ads, LinkedIn Ads, Google Ads (YouTube), and Google Drive (Emplifi exports) — transforms and standardises it across a shared schema, and loads it into a MySQL database. Client data is written to individual per-client databases and simultaneously routed to cross-client industry aggregate tables, enabling both granular reporting and benchmarking across accounts. All pipeline runs, API calls, and row-level operations are logged to a dedicated `etl_logs` database for observability and debugging.
+
 This was built in collaboration with Codebugged Research company.
+
+## Pipeline Architecture
+
+![ETL Pipeline Diagram](pipeline.png)
 ## Environment Variables
 The pipeline expects several credentials to be available as environment variables or in a `.env`/`keys.env` file:
 - `DB_USER` – database username
